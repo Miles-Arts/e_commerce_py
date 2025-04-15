@@ -1,7 +1,8 @@
 # e_commerce_py
 
 Activar Entorno Virtual: 
-VENV comando -> source venv/Scripts/activate
+VENV comando -> <br><h4>source venv/Scripts/activate
+<h4>
 
 Correr proyecto:
-python src/app.py
+python <br><h4>src/app.py<H4>
