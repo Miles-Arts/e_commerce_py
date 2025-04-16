@@ -55,6 +55,27 @@ def add_movie():
     except Exception as ex:
         return jsonify({'message':str(ex)}), 500
     
+@main.route('/update/<id>',methods=['PUT'])
+def apdate_movie(id):
+    try:
+        
+        title=request.json['title']
+        duration=int(request.json['duration'])
+        released=request.json['released']
+        
+        movie=Movie(id,title,duration,released)
+        
+        affected_rows=MovieModel.update_movie(movie)
+        
+        if affected_rows == 1:
+            return jsonify(movie.id)
+        else:
+            return jsonify({'message':"Película no actualizada."}), 404
+        
+    except Exception as ex:
+        return jsonify({'message':str(ex)}), 500    
+
+    
 @main.route('/delete/<id>',methods=['DELETE'])
 def delete_movie(id):
     try:
@@ -71,26 +92,7 @@ def delete_movie(id):
     except Exception as ex:
         return jsonify({'message':str(ex)}), 500
 
-@main.route('/update/<id>',methods=['PUT'])
-def apdate_movie():
-    try:
-        
-        title=request.json['title']
-        duration=int(request.json['duration'])
-        released=request.json['released']
-        
-        id=uuid.uuid4()
-        movie=Movie(str(id),title,duration,released)
-        
-        affected_rows=MovieModel.add_movie(movie)
-        
-        if affected_rows == 1:
-            return jsonify(movie.id)
-        else:
-            return jsonify({'message':"Error al insertar datos"}), 500
-        
-    except Exception as ex:
-        return jsonify({'message':str(ex)}), 500
+
 
 
 
