@@ -1,12 +1,13 @@
 from flask import Flask
-
 from config import config
-
+from flask_cors import CORS
 
 #Routes
 from routes import Movie
 
 app=Flask(__name__)
+
+#CORS(app, resources={"*":{"origins":"http://localhost:3000"}})
 
 def page_not_found(error):
      return "<h1>No Funciona la página</h1><br><h4>Comuniquese con soporte</h4>", 404
