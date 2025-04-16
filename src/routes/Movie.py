@@ -1,12 +1,15 @@
 from flask import Blueprint 
 from flask import jsonify
+from flask import request
+import uuid
+
+#Entities
+from models.entities.Movie import Movie
 
 #models
 from models.MovieModel import MovieModel
 
-
 main=Blueprint('movie_blueprint', __name__)
-
 
 @main.route('/')
 def get_movies():
@@ -31,15 +34,18 @@ def get_movie(id):
     except Exception as ex:
         return jsonify({'message':str(ex)}), 500
     
-@main.route('/<id>')
-def get_movie(id):
+@main.route('/add',methods=['POST'])
+def add_movie():
     try:
         
-        movie=MovieModel.get_movie(id)
-        if movie!=None:
-            return jsonify(movie)
-        else:
-            return jsonify({}),404
+        title=request.json['title']
+        duration=int(request.json['duration'])
+        released=request.json['released']
+        
+        id=uuid.uuid4()
+        movie=Movie(str(id),title,duration,released)
+        
+        return jsonify({})
         
     except Exception as ex:
         return jsonify({'message':str(ex)}), 500
