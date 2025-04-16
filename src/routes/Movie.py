@@ -1,13 +1,15 @@
 from flask import Blueprint 
 from flask import jsonify
 from flask import request
+import uuid
+
+#Entities
+from models.entities.Movie import Movie
 
 #models
 from models.MovieModel import MovieModel
 
-
 main=Blueprint('movie_blueprint', __name__)
-
 
 @main.route('/')
 def get_movies():
@@ -39,6 +41,9 @@ def add_movie():
         title=request.json['title']
         duration=int(request.json['duration'])
         released=request.json['released']
+        
+        id=uuid.uuid4()
+        movie=Movie(str(id),title,duration,released)
         
         return jsonify({})
         
