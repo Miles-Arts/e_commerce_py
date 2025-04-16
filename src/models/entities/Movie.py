@@ -14,4 +14,5 @@ class Movie():
             'title':self.title,
             'duration':self.duration,
             'released':DateFormat.convert_date(self.released)
+            
         }
