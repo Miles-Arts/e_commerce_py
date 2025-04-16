@@ -23,7 +23,7 @@ class MovieModel():
                         row[3]
                     )
                     
-                    movies.append(movie)
+                    movies.append(movie.to_json())
             connection.close()    
             
             return movies
