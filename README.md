@@ -1,10 +1,5 @@
 # e_commerce_py
 
-## Activar Entorno Virtual: 
-VENV comando -> <br><h4>✅ source venv/Scripts/activate<h4>
-## Correr proyecto:
- <br><h4>✅ python src/app.py<H4>
-
 ## Descripción
 Este proyecto es una aplicación de comercio electrónico desarrollada en Python. Utiliza una arquitectura modular con carpetas separadas para modelos, rutas, utilidades y configuración.
 
